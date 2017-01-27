@@ -36,4 +36,4 @@ $ cd jaguar_spark
 
 $ sbt clean package
 
-$ bin/submit_sparkt.sh
+$ bin/submit_spark.sh
