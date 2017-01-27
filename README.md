@@ -1,4 +1,4 @@
-# jaguar_spark
+# jaguar_spark (centos)
 
 ## Install sbt (under root)
 
@@ -27,6 +27,12 @@ $ tar xvf spark-1.6.0-bin-hadoop2.6.tgz
 $ ln -s spark-1.6.0-bin-hadoop2.6 spark
 
 ## Build & Run
+
+$ sudo yum install git
+
+$ git clone https://github.com/listree/jaguar_spark.git
+
+$ cd jaguar_spark
 
 $ sbt clean package
 
