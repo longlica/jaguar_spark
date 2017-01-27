@@ -1,6 +1,6 @@
 # jaguar_spark
 
-## Install sbt
+## Install sbt (under root)
 
 $ wget http://dl.bintray.com/sbt/rpm/sbt-0.13.5.rpm
 
@@ -39,8 +39,8 @@ echo 'export SPARK_HOME=$HOME/spark-1.6.0-bin-hadoop2.6' >> .bash_profile
 
 echo 'export PATH=$PATH:$SPARK_HOME/bin' >> .bash_profile
 
-## Build scala package
+## Build scala package (under any)
 $ sbt clean package
 
-## Run jaguar on spark
+## Run jaguar on spark (under any)
 $ bin/submit_sparkt.sh
