@@ -6,41 +6,36 @@ $ wget http://dl.bintray.com/sbt/rpm/sbt-0.13.5.rpm
 
 $ sudo yum localinstall sbt-0.13.5.rpm
 
-## Install Spark on CentOS 7 (under root)
-yum install java -y
+## Install scala
 
-java -version
+$ wget http://downloads.typesafe.com/scala/2.11.7/scala-2.11.7.tgz
 
-yum install wget -y
+$ tar xvf scala-2.11.7.tgz
 
-wget http://downloads.typesafe.com/scala/2.11.7/scala-2.11.7.tgz
+$ udo mv scala-2.11.7 /usr/lib
 
-tar xvf scala-2.11.7.tgz
+$ sudo ln -s /usr/lib/scala-2.11.7 /usr/lib/scala
 
-sudo mv scala-2.11.7 /usr/lib
+$ export PATH=$PATH:/usr/lib/scala/bin
 
-sudo ln -s /usr/lib/scala-2.11.7 /usr/lib/scala
+## Install Spark
 
-export PATH=$PATH:/usr/lib/scala/bin
+$ wget http://d3kbcqa49mib13.cloudfront.net/spark-1.6.0-bin-hadoop2.6.tgz
 
-scala -version
+$ tar xvf spark-1.6.0-bin-hadoop2.6.tgz
 
-wget http://d3kbcqa49mib13.cloudfront.net/spark-1.6.0-bin-hadoop2.6.tgz
+$ export SPARK_HOME=$HOME/spark-1.6.0-bin-hadoop2.6
 
-tar xvf spark-1.6.0-bin-hadoop2.6.tgz
+$ export PATH=$PATH:$SPARK_HOME/bin
 
-export SPARK_HOME=$HOME/spark-1.6.0-bin-hadoop2.6
+$ echo 'export PATH=$PATH:/usr/lib/scala/bin' >> .bash_profile
 
-export PATH=$PATH:$SPARK_HOME/bin
+$ echo 'export SPARK_HOME=$HOME/spark-1.6.0-bin-hadoop2.6' >> .bash_profile
 
-echo 'export PATH=$PATH:/usr/lib/scala/bin' >> .bash_profile
+$ echo 'export PATH=$PATH:$SPARK_HOME/bin' >> .bash_profile
 
-echo 'export SPARK_HOME=$HOME/spark-1.6.0-bin-hadoop2.6' >> .bash_profile
-
-echo 'export PATH=$PATH:$SPARK_HOME/bin' >> .bash_profile
-
-## Build scala package (under any)
+## Build jaguar spark
 $ sbt clean package
 
-## Run jaguar on spark (under any)
+## Run jaguar spark
 $ bin/submit_sparkt.sh
