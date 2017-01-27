@@ -26,8 +26,8 @@ $ tar xvf spark-1.6.0-bin-hadoop2.6.tgz
 
 $ ln -s spark-1.6.0-bin-hadoop2.6 spark
 
-## Build jaguar spark
+## Build & Run
+
 $ sbt clean package
 
-## Run jaguar spark
 $ bin/submit_sparkt.sh
