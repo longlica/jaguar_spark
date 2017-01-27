@@ -24,15 +24,7 @@ $ wget http://d3kbcqa49mib13.cloudfront.net/spark-1.6.0-bin-hadoop2.6.tgz
 
 $ tar xvf spark-1.6.0-bin-hadoop2.6.tgz
 
-$ export SPARK_HOME=$HOME/spark-1.6.0-bin-hadoop2.6
-
-$ export PATH=$PATH:$SPARK_HOME/bin
-
-$ echo 'export PATH=$PATH:/usr/lib/scala/bin' >> .bash_profile
-
-$ echo 'export SPARK_HOME=$HOME/spark-1.6.0-bin-hadoop2.6' >> .bash_profile
-
-$ echo 'export PATH=$PATH:$SPARK_HOME/bin' >> .bash_profile
+$ ln -s spark-1.6.0-bin-hadoop2.6 spark
 
 ## Build jaguar spark
 $ sbt clean package
