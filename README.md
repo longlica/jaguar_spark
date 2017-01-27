@@ -1,4 +1,4 @@
-# jaguar_spark
+# jaguar_spark (centos)
 
 ## Install sbt (under root)
 
