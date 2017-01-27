@@ -25,10 +25,10 @@ object TestScalaJDBC {
 
 	def sparkfunc()
 	{
-        Class.forName("com.jaguar.jdbc.JaguarDriver");
-        val sparkConf = new SparkConf().setAppName("TestScalaJDBC")
-        val sc = new SparkContext(sparkConf)
-        val sqlContext = new org.apache.spark.sql.SQLContext(sc)
+		Class.forName("com.jaguar.jdbc.JaguarDriver");
+		val sparkConf = new SparkConf().setAppName("TestScalaJDBC")
+		val sc = new SparkContext(sparkConf)
+		val sqlContext = new org.apache.spark.sql.SQLContext(sc)
 		import sqlContext.implicits._
 
 		val hadoopConf = new org.apache.hadoop.conf.Configuration()
@@ -37,11 +37,11 @@ object TestScalaJDBC {
 		// Logger.getLogger("org").setLevel(Level.OFF)
 		// Logger.getLogger("akka").setLevel(Level.OFF)
 
-		val url = "jdbc:jaguar://127.0.0.1:8900/test";
+		val url = "jdbc:jaguar://127.0.0.1:8888/test";
 
 		val people = sqlContext.read.format("jdbc")
 		   .options(
-		       Map( "url" -> "jdbc:jaguar://127.0.0.1:8900/test",
+		       Map( "url" -> "jdbc:jaguar://127.0.0.1:8888/test",
 			        "dbtable" -> "int10k",
 					"user" -> "admin",
 					"password" -> "jaguar",
@@ -58,7 +58,7 @@ object TestScalaJDBC {
 
 		val people2 = sqlContext.read.format("jdbc")
 		   .options(
-		       Map( "url" -> "jdbc:jaguar://127.0.0.1:8900/test",
+		       Map( "url" -> "jdbc:jaguar://127.0.0.1:8888/test",
 			        "dbtable" -> "int10k_2",
 					"user" -> "admin",
 					"password" -> "jaguar",
@@ -96,10 +96,10 @@ object TestScalaJDBC {
 		st.executeUpdate()
 
 		val st2 = conn.createStatement()
-		st2.executeUpdate( "insert into jbench values (qqq22, qqqqq222)")
-		st2.executeUpdate( "insert into jbench values (qqq23, qqqqq222)")
-		st2.executeUpdate( "update jbench set addr=999999 where uid=qqq22")
-		st2.executeUpdate( "delete from jbench where uid=qqq23")
+		st2.executeUpdate( "insert into jbench values (qqq22, qqqqq222)" )
+		st2.executeUpdate( "insert into jbench values (qqq23, qqqqq222)" )
+		st2.executeUpdate( "update jbench set addr=999999 where uid=qqq22" )
+		st2.executeUpdate( "delete from jbench where uid=qqq23" )
 
 
 		// bad
@@ -109,25 +109,25 @@ object TestScalaJDBC {
 
 
 		// workd fine
-        val k12 = people.select("k1", "k2")
+		val k12 = people.select("k1", "k2")
 		k12.show();
 
 		// workd fine
-        val sk1 = people.select("k1")
+		val sk1 = people.select("k1")
 		sk1.show();
 
 		// workd fine
-        val sk2 = people.select("k2")
+		val sk2 = people.select("k2")
 		sk2.show();
 		
 		// works fine
-        val below60 = people.filter(people("k1") <= 3927570 ).show()
+		val below60 = people.filter(people("k1") <= 3927570 ).show()
 
 		// works fine
 		people.groupBy("addr").count().show()
 
 		// works fine
-        people.groupBy("addr").avg().show()
+		people.groupBy("addr").avg().show()
 
 		// bad
 		/***
@@ -197,17 +197,17 @@ object TestScalaJDBC {
 			.limit(3).show()
 
 		// works fine
-		 people.unionAll(people2).show()
-		 people.intersect(people2).show()
-		 people.except(people2).show()
-		 people.sample( true, 0.1, 100 ).show()
-		 people.distinct.show()
-		 people.dropDuplicates().show()
-		 people.dropDuplicates.show()
+		people.unionAll(people2).show()
+		people.intersect(people2).show()
+		people.except(people2).show()
+		people.sample( true, 0.1, 100 ).show()
+		people.distinct.show()
+		people.dropDuplicates().show()
+		people.dropDuplicates.show()
 
 		// works fine
-		 people.dropDuplicates.cache.show()
-		 people.dropDuplicates.persist.show()
+		people.dropDuplicates.cache.show()
+		people.dropDuplicates.persist.show()
 
 		// not compile
 		// val inf = people.inputFiles()
@@ -224,7 +224,7 @@ object TestScalaJDBC {
 
 		// works
 		val df = sqlContext.sql("SELECT * FROM int10k where k1 < 200000000 and addr between 'JDHJDH' and 'ZBJDDJDJKDJKJDKJKD' ")
-        df.distinct.show()
+		df.distinct.show()
 	}
 
 	def sparkfunc2()
@@ -243,7 +243,7 @@ object TestScalaJDBC {
 
 		val people = sqlContext.read.format("jdbc")
 		   .options(
-		       Map( "url" -> "jdbc:jaguar://127.0.0.1:8900/test",
+		       Map( "url" -> "jdbc:jaguar://127.0.0.1:8888/test",
 			        "dbtable" -> "tm3",
 					"user" -> "admin",
 					"password" -> "jaguar",
