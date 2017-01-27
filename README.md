@@ -6,7 +6,7 @@ $ wget http://dl.bintray.com/sbt/rpm/sbt-0.13.5.rpm
 
 $ sudo yum localinstall sbt-0.13.5.rpm
 
-## Install Spark on CentOS 7
+## Install Spark on CentOS 7 (under root)
 yum install java -y
 
 java -version
