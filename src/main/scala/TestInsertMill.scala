@@ -13,7 +13,14 @@ import scala.collection._
 object TestInsertMill {
 
 	def main(args: Array[String]) {
-			sparkfunc("NODE_", 10000000)
+		if (args.length < 2) {
+			println("Usage: java TestInsertMill nodeName rowNumber")
+			sys.exit(1);
+		}
+
+		val prefix = args(0)
+		val max = args(1).toInt
+		sparkfunc(prefix, max)
 	}
 
 	def sparkfunc(prefix: String, max: Int)

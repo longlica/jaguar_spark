@@ -14,6 +14,7 @@ $HOME/spark/bin/spark-submit \
     --master local[1] \
     --driver-library-path $LD_LIBRARY_PATH \
     $PROJJAR
+    NODE_ 100
 
 t2=`date +'%s'`
 ((dt=t2-t1))
