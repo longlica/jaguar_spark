@@ -34,6 +34,7 @@ object TestInsertMill {
 		var n = 1
 		while( n < max ) {
 			val sqlstr = "insert into jbench values (" + prefix + n + "," + prefix + n + ")"
+			println(sqlstr)
 			st2.executeUpdate(sqlstr)
 			n = n + 1
 		}
