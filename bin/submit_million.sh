@@ -9,10 +9,10 @@ date
 t1=`date +'%s'`
 
 $HOME/spark/bin/spark-submit \
-        --class TestScalaJDBC \
-        --jars $JAR \
+    --class TestInsertMill \
+    --jars $JAR \
     --master local[1] \
-        --driver-library-path $LD_LIBRARY_PATH \
+    --driver-library-path $LD_LIBRARY_PATH \
     $PROJJAR
 
 t2=`date +'%s'`
