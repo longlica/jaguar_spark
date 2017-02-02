@@ -8,8 +8,10 @@ export SPARK_HOME=$HOME/spark
 date
 t1=`date +'%s'`
 
+echo "run $1"
+
 $HOME/spark/bin/spark-submit \
-    --class TestScalaJDBC \
+    --class $1 \
     --jars $JAR \
     --master local[1] \
     --driver-library-path $LD_LIBRARY_PATH \
